@@ -1,0 +1,46 @@
+{
+ "1-0": {
+  "file": "01_de_mirage.zip",
+  "size": 143808253
+ },
+ "2-0": {
+  "file": "02_de_dust2.zip",
+  "size": 122678339
+ },
+ "3-0": {
+  "file": "03_de_inferno.zip",
+  "size": 197921484
+ },
+ "4-0": {
+  "file": "04_de_nuke.zip",
+  "size": 162356535
+ },
+ "5-0": {
+  "file": "05_de_ancient.zip",
+  "size": 146031544
+ },
+ "6-0": {
+  "file": "06_de_anubis.zip",
+  "size": 173377397
+ },
+ "7-0": {
+  "file": "07_de_overpass.zip",
+  "size": 125019434
+ },
+ "8-0": {
+  "file": "08_de_cbble.zip",
+  "size": 154322136
+ },
+ "9-0": {
+  "file": "09_de_vertigo.zip",
+  "size": 144671316
+ },
+ "10-0": {
+  "file": "10_de_train.zip",
+  "size": 172550765
+ },
+ "11-0": {
+  "file": "11_de_cache.zip",
+  "size": 158678025
+ }
+}

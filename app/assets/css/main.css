@@ -1,0 +1,122 @@
+/* Dark, CS2-match-history-like theme. Fonts are bundled from node_modules (@fontsource) – no CDN. */
+:root {
+  --bg: #0d1015;
+  --bg-2: #141922;
+  --bg-3: #1b212c;
+  --row-hover: #1f2633;
+  --line: #262e3b;
+  --text: #e6e9ef;
+  --muted: #8a93a3;
+  --dim: #5d6574;
+  --accent: #e8b84a;
+  --win: #5fd17a;
+  --loss: #e5534b;
+  --live: #ff4655;
+  --lead: rgba(232, 184, 74, 0.16);
+  --font: 'Inter Variable', system-ui, sans-serif;
+  --mono: 'JetBrains Mono Variable', ui-monospace, monospace;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  /* Scales up on the big screen in the venue. */
+  font-size: clamp(14px, 0.55vw + 9px, 19px);
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(1200px 600px at 20% -10%, #1a2130 0%, transparent 60%), var(--bg);
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: var(--font);
+  font-feature-settings: 'tnum' 1; /* tabular digits */
+  min-height: 100vh;
+}
+
+a { color: inherit; }
+
+.container { max-width: 1680px; margin: 0 auto; padding: 0 1rem 3rem; }
+
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.pos { color: var(--win); }
+.neg { color: var(--loss); }
+.muted { color: var(--muted); }
+.dim { color: var(--dim); }
+
+/* Tables */
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+table.stats {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  white-space: nowrap;
+}
+table.stats th,
+table.stats td {
+  padding: 0.45rem 0.6rem;
+  text-align: right;
+  border-bottom: 1px solid var(--line);
+}
+table.stats th {
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+  background: var(--bg-2);
+}
+table.stats td { font-family: var(--mono); }
+table.stats .left { text-align: left; }
+table.stats .player-cell {
+  font-family: var(--font);
+  font-weight: 600;
+  text-align: left;
+  position: sticky;
+  left: 0;
+  background: var(--bg-2);
+  z-index: 1;
+}
+table.stats tbody tr:hover td { background: var(--row-hover); }
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.12rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: var(--font);
+  border: 1px solid currentColor;
+  background: color-mix(in srgb, currentColor 14%, transparent);
+}
+
+.live-dot {
+  display: inline-block;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--live);
+  box-shadow: 0 0 0 0 var(--live);
+  animation: pulse 1.6s infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 70, 85, 0.6); }
+  70% { box-shadow: 0 0 0 0.5rem rgba(255, 70, 85, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 70, 85, 0); }
+}
+
+.empty {
+  text-align: center;
+  padding: 4rem 1rem;
+  color: var(--muted);
+  font-size: 1.2rem;
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  background: var(--bg-2);
+}
+
+.star { color: var(--accent); }

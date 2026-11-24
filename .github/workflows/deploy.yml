@@ -1,0 +1,39 @@
+name: Deploy to GitHub Pages
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+        id: pages
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 12.22.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test
+      - run: pnpm generate
+        env:
+          # Derived from the repository, so its name is never hard-coded.
+          NUXT_APP_BASE_URL: ${{ steps.pages.outputs.base_path }}/
+          NUXT_PUBLIC_DEMO_BASE_URL: https://github.com/${{ github.repository }}/releases/download/demos
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .output/public
+      - uses: actions/deploy-pages@v4
+        id: deployment
